@@ -2,7 +2,9 @@ package com.bh1ofp.gateway.inbound;
 
 import com.bh1ofp.gateway.filter.HeaderHttpRequestFilter;
 import com.bh1ofp.gateway.filter.HttpRequestFilter;
+import com.bh1ofp.gateway.filter.Week03HeaderHttpRequestFilter;
 import com.bh1ofp.gateway.outbound.httpclient4.HttpOutboundHandler;
+import com.bh1ofp.gateway.outbound.okhttp.OkhttpOutboundHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -16,12 +18,13 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
 
     private static Logger logger = LoggerFactory.getLogger(HttpInboundHandler.class);
     private final List<String> proxyServer;
-    private HttpOutboundHandler handler;
-    private HttpRequestFilter filter = new HeaderHttpRequestFilter();
+    private OkhttpOutboundHandler handler;
+//    private HeaderHttpRequestFilter filter = new HeaderHttpRequestFilter();
+    private Week03HeaderHttpRequestFilter filter = new Week03HeaderHttpRequestFilter();
     
     public HttpInboundHandler(List<String> proxyServer) {
         this.proxyServer = proxyServer;
-        this.handler = new HttpOutboundHandler(this.proxyServer);
+        this.handler = new OkhttpOutboundHandler(this.proxyServer);
     }
     
     @Override

@@ -3,11 +3,10 @@ package com.bh1ofp.gateway.filter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
 
-public class HeaderHttpRequestFilter implements HttpRequestFilter {
+public class Week03HeaderHttpRequestFilter implements HttpRequestFilter {
 
     @Override
     public void filter(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
-        fullRequest.headers().set("mao", "soul");
-
+        fullRequest.headers().set("CallSign","BH1OFP");
     }
 }
