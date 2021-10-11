@@ -162,6 +162,7 @@ public class OkhttpOutboundHandler {
                 }
             }
             ctx.flush();
+            ctx.close();
         }
     }
 
